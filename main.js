@@ -1,71 +1,61 @@
-const photoCollection = [
-    {
-        src: 'https://picsum.photos/id/0/200/100',
-        title: 'foto 0'
-    },
-    {
-        src: 'https://picsum.photos/id/1/200/100',
-        title: 'foto 1'
-    },
-    {
-        src: 'https://picsum.photos/id/2/200/100',
-        title: 'foto 2'
-    },
-    {
-        src: 'https://picsum.photos/id/3/200/100',
-        title: 'foto 3'
-    },
-    {
-        src: 'https://picsum.photos/id/4/200/100',
-        title: 'foto 4'
-    },
-    {
-        src: 'https://picsum.photos/id/5/200/100',
-        title: 'foto 5'
-    },
-    {
-        src: 'https://picsum.photos/id/6/200/100',
-        title: 'foto 6'
-    },
-    {
-        src: 'https://picsum.photos/id/7/200/100',
-        title: 'foto 7'
-    },
-    {
-        src: 'https://picsum.photos/id/8/200/100',
-        title: 'foto 8'
-    },
-];
-
 // Enganche con los elementos de la página
-const photoSelectorLeft = document.getElementById('photoLeft');
-const photoSelectorRight = document.getElementById('photoRight');
-const resultado = document.getElementById('resultado');
+const imgLeft = document.getElementById('photoLeft');
+const imgRight = document.getElementById('photoRight');
+// Controlar el clic en las fotos
+imgLeft.addEventListener('click', (e) => setNewPhoto(e.target));
+imgRight.addEventListener('click', (e) => setNewPhoto(e.target));
+let ready = false;
+let timeoutID = null;
 
-const setPhoto = function(img, photo) {
-    img.src = photo.src;
-    img.alt = photo.title;
+// Cargar las fotos del servidor
+const load = function () {
+    ready = false;
+    fetch('api.php').then(function (response) {
+        // Convert to JSON
+        return response.json();
+    }).then(function (res) {
+        // Asignar las fotos por primera vez
+        setPhoto(imgLeft, res.photoLeft);
+        setPhoto(imgRight, res.photoRight);
+        ready = true;
+        timeoutID = setTimeout(load, 5000);
+    });
 }
-const setNewPhoto = function (img) {
-    // Si hacen clic en la foto0 cambio la foto1
-    const imgChange = (img.id === 'photoLeft')
-        ? photoSelectorRight
-        : photoSelectorLeft;
 
-    // Si aún hay fotos en la bolsa
-    if (photoCollection.length > 0) {
-        setPhoto(imgChange, photoCollection.pop());
+const setPhoto = function (img, data) {
+    if(data){
+        img.src = data.src;
+        img.alt = data.title;
+        img.dataset.id = data.id;
+        img.classList.remove('descartada');
     }
     else {
-        imgChange.classList.add('descartada');
-        resultado.innerHTML = 'Fin te quedas con ' + img.alt;
+        img.classList.add('descartada');
     }
 }
-photoSelectorLeft.addEventListener('click', (e) => setNewPhoto(e.target))
-photoSelectorRight.addEventListener('click', (e) => setNewPhoto(e.target))
+const setNewPhoto = function (img) {
+    if (!ready) return;
 
-// Asignar las fotos por primera vez
-setPhoto(photoSelectorLeft, photoCollection.pop());
-setPhoto(photoSelectorRight, photoCollection.pop());
+    // Si hacen clic en la izquierda cambio la de la derecha
+    const imgChange = (img.id === 'photoLeft')
+        ? imgRight
+        : imgLeft;
 
+    // request options
+    const data = new URLSearchParams();
+    data.append('a', 'pop');
+    data.append('n', imgChange.dataset.id);
+    const options = {
+        method: 'POST',
+        body: data
+    }
+    // send POST request
+    fetch('api.php', options)
+        .then(res => res.json())
+        .then(res => {
+            setPhoto(imgLeft, res.photoLeft);
+            setPhoto(imgRight, res.photoRight);
+        });
+}
 
+load();
