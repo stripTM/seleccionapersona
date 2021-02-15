@@ -56,7 +56,7 @@ switch ($action) {
         break;
     default:
         header('Content-Type: application/json');
-        if($_GET['a'] === 'collection') {
+        if(isset($_GET['a']) && $_GET['a'] === 'collection') {
             readfile($SESSION_COLLECTION);
         }
         else {
