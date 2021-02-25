@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selecciona persona</title>
+    <title>¿Con qué foto te quedas?</title>
     <style type="text/css">
         html, body {
-            margin: 0;
-            padding: 0;
+          width: 1920px;
+          height: 1080px;
+          margin: 0;
+          padding: 0;
         }
         body {
-            background-color: indianred;
+            background-color: black;
         }
         ul, li {
             margin: 0;
@@ -25,10 +27,29 @@
         .selector img {
             cursor: pointer;
             display: block;
-            width: 50vw;
+            width: 48vw;
+            margin: 0 0.5vw;
         }
         .selector img.descartada {
             display: none;
+        }
+        #admin {
+            opacity: 0;
+            cursor: help;
+            transition: opacity ease 0.5s;
+        }
+        #admin input[type=submit] {
+            cursor: pointer;
+        }
+        #admin .close {
+            display: none;
+        }
+        #admin.active {
+            opacity: 1;
+            cursor: auto;
+        }
+        #admin.active .close {
+            display: inline;
         }
     </style>
 </head>
@@ -42,9 +63,11 @@
             <img src="#" alt="personaje 2" id="photoRight">
         </li>
     </ul>
-    <script src="main.js"></script>
-    <form action="api.php" method="POST">
-        <input type="submit" name="a" value="reset"/>
+    <form action="api.php" method="POST" id="admin" class="">
+        <input type="submit" name="a" value="reset" title="Reset"/>
+        <input type="submit" name="a" value="undo" title="Undo"/>
+        <button class="close">❌</button>
     </form>
+    <script src="main.js"></script>
 </body>
 </html>

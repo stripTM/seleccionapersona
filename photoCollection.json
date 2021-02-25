@@ -1,38 +1,89 @@
-[
-    {
-        "src": "//ipsumimage.appspot.com/320x100?l=foto+0",
-        "title": "foto 0"
-    },
-    {
-        "src": "//ipsumimage.appspot.com/320x100?l=foto+1",
-        "title": "foto 1"
-    },
-    {
-        "src": "//ipsumimage.appspot.com/320x100?l=foto+2",
-        "title": "foto 2"
-    },
-    {
-        "src": "//ipsumimage.appspot.com/320x100?l=foto+3",
-        "title": "foto 3"
-    },
-    {
-        "src": "//ipsumimage.appspot.com/320x100?l=foto+4",
-        "title": "foto 4"
-    },
-    {
-        "src": "//ipsumimage.appspot.com/320x100?l=foto+5",
-        "title": "foto 5"
-    },
-    {
-        "src": "//ipsumimage.appspot.com/320x100?l=foto+6",
-        "title": "foto 6"
-    },
-    {
-        "src": "//ipsumimage.appspot.com/320x100?l=foto+7",
-        "title": "foto 7"
-    },
-    {
-        "src": "//ipsumimage.appspot.com/320x100?l=foto+8",
-        "title": "foto 8"
-    }
-]
+{
+    "refreshTime": 1000,
+    "photos": [
+        {
+            "src": "rotuladas/rotuladas.001.png",
+            "title": "foto 1"
+        },
+        {
+            "src": "rotuladas/rotuladas.002.png",
+            "title": "foto 2"
+        },
+        {
+            "src": "rotuladas/rotuladas.003.png",
+            "title": "foto 3"
+        },
+        {
+            "src": "rotuladas/rotuladas.004.png",
+            "title": "foto 4"
+        },
+        {
+            "src": "rotuladas/rotuladas.005.png",
+            "title": "foto 5"
+        },
+        {
+            "src": "rotuladas/rotuladas.006.png",
+            "title": "foto 6"
+        },
+        {
+            "src": "rotuladas/rotuladas.007.png",
+            "title": "foto 7"
+        },
+        {
+            "src": "rotuladas/rotuladas.008.png",
+            "title": "foto 8"
+        },
+        {
+            "src": "rotuladas/rotuladas.009.png",
+            "title": "foto 9"
+        },
+        {
+            "src": "rotuladas/rotuladas.010.png",
+            "title": "foto 10"
+        },
+        {
+            "src": "rotuladas/rotuladas.011.png",
+            "title": "foto 11"
+        },
+        {
+            "src": "rotuladas/rotuladas.012.png",
+            "title": "foto 12"
+        },
+        {
+            "src": "rotuladas/rotuladas.013.png",
+            "title": "foto 13"
+        },
+        {
+            "src": "rotuladas/rotuladas.014.png",
+            "title": "foto 14"
+        },
+        {
+            "src": "rotuladas/rotuladas.015.png",
+            "title": "foto 15"
+        },
+        {
+            "src": "rotuladas/rotuladas.016.png",
+            "title": "foto 16"
+        },
+        {
+            "src": "rotuladas/rotuladas.017.png",
+            "title": "foto 17"
+        },
+        {
+            "src": "rotuladas/rotuladas.018.png",
+            "title": "foto 18"
+        },
+        {
+            "src": "rotuladas/rotuladas.019.png",
+            "title": "foto 19"
+        },
+        {
+            "src": "rotuladas/rotuladas.020.png",
+            "title": "foto 20"
+        },
+        {
+            "src": "rotuladas/rotuladas.021.png",
+            "title": "foto 21"
+        }
+    ]
+}
